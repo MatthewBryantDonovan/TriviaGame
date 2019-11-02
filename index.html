@@ -14,7 +14,33 @@
 
 <body>
 
-    <p>Hello World!</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 bg-warning text-center">
+                <h1>John Wick Trivia Game</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="bg-success col-md-10 mt-5">
+                <div id="time-left"> Time Remaining: x Seconds </div> <!-- time remaining countdown-->
+                <div id="q"> question here</div> <!-- Trivia question -->
+                <div id="a1"> answer 1 </div> <!-- 1st option -->
+                <div id="a2"> answer 2 </div> <!-- 2nd option -->
+                <div id="a3"> answer 3 </div> <!-- 3rd option -->
+                <div id="a4"> answer 4 </div> <!-- 4th option -->
+                <div id="result"> Out of time! </div> <!-- question result and final result message -->
+                <div id="pic"></div> <!-- append image here for results -->
+                <div id="correct"></div> <!-- final result message correct data -->
+                <div id="incorrect"></div> <!-- final result message incorrect data -->
+                <div id="unanswered"></div> <!-- final result message unanswered data -->
+                <button id="start"> start </button> <!-- only available at start of game then repurpose to ;Start Over; button-->
+            </div>
+        </div>
+
+
+
+    </div>
+    
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

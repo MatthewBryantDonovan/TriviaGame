@@ -1,3 +1,40 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//pseudocode
+// game start start -> start button only
+// screen will always display timer and all question data
+// user selects answer
+// display result
+// click anywhere to continue
+// iterate until all questions asked
+// display final result data
+
+//object oriented i will need a object named question
+//it will need properties 
+//ask
+//option
+//result (it will be the picture but I may add result flavor for win/loss/out of time in)
+// (rPic, rWin, rLoss, rOOT)
+
+// I will also need these vars
+// wins
+// loss
+// OOT
+
+
+
 /* 
 **[Click Here to Watch the demo](https://youtu.be/xhmmiRmxQ8Q)**.
 
