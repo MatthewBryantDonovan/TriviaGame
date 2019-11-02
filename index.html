@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- use to add small icon --><!-- <link rel="shortcut icon" href="./assets/imgs/favicon.ico" type="image/x-icon"> -->
     <title>John Wick Trivia Game</title>
 </head>
 
@@ -22,17 +23,19 @@
         </div>
         <div class="row justify-content-center">
             <div class="bg-success col-md-10 mt-5">
-                <div id="time-left"> Time Remaining: x Seconds </div> <!-- time remaining countdown-->
-                <div id="q"> question here</div> <!-- Trivia question -->
-                <div id="a1"> answer 1 </div> <!-- 1st option -->
-                <div id="a2"> answer 2 </div> <!-- 2nd option -->
-                <div id="a3"> answer 3 </div> <!-- 3rd option -->
-                <div id="a4"> answer 4 </div> <!-- 4th option -->
-                <div id="result"> Out of time! </div> <!-- question result and final result message -->
+                <div id="time-left"></div> <!-- time remaining countdown-->
+                <div id="q"></div> <!-- Trivia question -->
+                <div id="a1" class="option"></div> <!-- 1st option -->
+                <div id="a2" class="option"></div> <!-- 2nd option -->
+                <div id="a3" class="option"></div> <!-- 3rd option -->
+                <div id="a4" class="option"></div> <!-- 4th option -->
+                <div id="result"></div> <!-- question result and final result message -->
+                <div id="answer"></div>
                 <div id="pic"></div> <!-- append image here for results -->
                 <div id="correct"></div> <!-- final result message correct data -->
                 <div id="incorrect"></div> <!-- final result message incorrect data -->
                 <div id="unanswered"></div> <!-- final result message unanswered data -->
+                <button id="continue"> Continue </button>
                 <button id="start"> start </button> <!-- only available at start of game then repurpose to ;Start Over; button-->
             </div>
         </div>
