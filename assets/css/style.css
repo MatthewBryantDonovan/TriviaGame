@@ -5,3 +5,10 @@
 #continue {
     display: none;
 }
+
+.option {
+    background: lightcoral;
+}
+.option:hover {
+    border: 3px solid blue;
+}

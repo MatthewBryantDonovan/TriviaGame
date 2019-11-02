@@ -1,4 +1,3 @@
-//favicon.ico
 var trivia = {
     question: {
         ask: [],
@@ -28,12 +27,12 @@ var trivia = {
 
     start() {
         trivia.replay();
+        $("#continue").html("Continue");
         $("#continue").css("display", "none");
         $("#start").css("display", "initial");
         $("#start").attr({
             "onclick": "trivia.qCurrent()"
         });
-        console.log("start");
 
     },
 
@@ -44,25 +43,25 @@ var trivia = {
         function startTimer() {
             clearInterval(trivia.questionTimer);
             trivia.questionTimer = setInterval(tickDown, 1000 * 1);
-          }
+        }
 
 
-          function tickDown() {
+        function tickDown() {
 
             //  Decrease number by one.
             trivia.timer--;
-      
+
             //  Show the number in the #show-number tag.
             $("#time-left").html("Remaining Time: " + trivia.timer + " Seconds");
-      
-      
+
+
             //  Once number hits zero...
             if (trivia.timer == 0) {
                 trivia.qResult();
             }
-          }
+        }
 
-          startTimer();
+        startTimer();
 
         $("#continue").css("display", "none");
         $("#start").css("display", "none");
@@ -72,10 +71,33 @@ var trivia = {
 
         $("#time-left").html("Remaining Time: 30 Seconds");
         $("#q").html(trivia.question.ask[trivia.currentQ]);
-        $("#a1").html(trivia.question.option1[trivia.currentQ]);
-        $("#a2").html(trivia.question.option2[trivia.currentQ]);
-        $("#a3").html(trivia.question.option3[trivia.currentQ]);
-        $("#a4").html(trivia.question.option4[trivia.currentQ]);
+
+        //answer randomizer code
+        var includes = [];
+        var randomizeOptions = [];
+        for (let i = 1; i <= 4; i++) {
+            var randomNum = -1;
+            do {
+                randomNum = (Math.floor(Math.random() * 4) + 1);
+            } while (includes.includes(randomNum) == true);
+                        includes.push(randomNum);
+            if (randomNum == 1) {
+                randomizeOptions.push(trivia.question.option1[trivia.currentQ]);
+            }
+            if (randomNum == 2) {
+                randomizeOptions.push(trivia.question.option2[trivia.currentQ]);
+            }
+            if (randomNum == 3) {
+                randomizeOptions.push(trivia.question.option3[trivia.currentQ]);
+            }
+            if (randomNum == 4) {
+                randomizeOptions.push(trivia.question.option4[trivia.currentQ]);
+            }
+            $("#a" + i).html(randomizeOptions[i-1]);
+            $("#a" + i).attr("data-option", randomizeOptions[i-1]);
+        }
+
+
         $(".option").attr("onclick", "trivia.qResult()");
 
         trivia.currentQ++;
@@ -91,13 +113,13 @@ var trivia = {
         $("#a4").html("");
         $(".option").prop("onclick", null);
         $("#continue").css("display", "initial");
-
+        
         if (trivia.timer == 0) {
             $("#result").html("You ran out of time!");
             trivia.oot++;
             console.log("oot", trivia.oot);
 
-        } else if (event.target.id == "a1") {
+        } else if (event.target.getAttribute("data-option") == trivia.question.option1[trivia.currentQ-1]) {
 
             $("#result").html("You guessed right!");
             trivia.win++;
@@ -135,25 +157,21 @@ var trivia = {
         $("#correct").html("");
         $("#incorrect").html("");
         $("#unanswered").html("");
-        trivia.win = 0,
-            trivia.loss = 0,
-            trivia.oot = 0,
-            trivia.currentQ = 0,
-
-            console.log("got it");
+        trivia.win = 0;
+            trivia.loss = 0;
+            trivia.oot = 0;
+            trivia.currentQ = 0;
     }
 
 
 }
 
-trivia.qLoader("the answer is red", "red", "blue", "green", "yellow", "alucard.png", 0);
-trivia.qLoader("the answer is one", "one", "two", "three", "four", "alucard.png", 1);
-trivia.qLoader("the answer is potato", "potato", "carrot", "squash", "pumpkin", "alucard.png", 2);
-trivia.qLoader("the answer is grape", "grape", "cherry", "peach", "banana", "alucard.png", 3);
-trivia.qLoader("the answer is earth", "earth", "wind", "fire", "water", "alucard.png", 4);
+trivia.qLoader("John Wick seeks vengeance after which happens?", "His dog is killed", "His wife is taken", "Someone rips his suit jacket", "Someone destroys his favorite firearm", "alucard.png", 0);
+trivia.qLoader("Which of the following is an alias of John Wick?", "Baba Yaga", "Killer 7", "Dark Phantom", "Shooter in the Dark", "alucard.png", 1);
+trivia.qLoader("Viggo Tarasov tells the story of John Wick killing three men with 'what' item?", "Pencil", "Carrot", "Wiffle Ball Bat", "Paper Clip", "alucard.png", 2);
+trivia.qLoader("Who is the owner of the Continental?", "Winston", "Harry", "Marcus", "Charon", "alucard.png", 3);
+trivia.qLoader("What breed of dog does John Wick free at the end of the movie?", "Pit Bull", "German Shepherd", "Bulldog", "Rottweiler", "alucard.png", 4);
 
-
-console.log(trivia);
 
 trivia.start();
 
