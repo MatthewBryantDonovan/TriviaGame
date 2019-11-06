@@ -132,7 +132,7 @@ var trivia = {
         }
 
         $("#answer").html("The correct answer was: " + trivia.question.option1[trivia.currentQ - 1]);
-        $("#pic").html("<img src=./assets/images/" + trivia.question.result[trivia.currentQ - 1] + "></img>");
+        $("#pic").html("<img id=resultPic src=./assets/images/" + trivia.question.result[trivia.currentQ - 1] + "></img>");
         if (trivia.currentQ != trivia.question.ask.length) {
             $("#continue").attr("onclick", "trivia.qCurrent()");
         } else {
