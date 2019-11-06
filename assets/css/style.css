@@ -8,10 +8,16 @@
 }
 
 .option:hover {
-    width: 90%;
-    border: 3px solid rgb(149, 191, 218);
+    /* width: 90%;
+    border: 3px solid rgb(149, 191, 218); */
     text-align: center;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color:rgb(179, 213, 235);
 }
+
+body.hasHover .option:hover {width: 90%;
+    border: 3px solid rgb(149, 191, 218);
+    text-align: center;}
 
 body {
     background: url(../images/johnWickBG.jpg);
