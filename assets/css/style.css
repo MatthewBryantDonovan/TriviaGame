@@ -1,5 +1,5 @@
 #resultPic {
-    height: 20vh;
+    height: 30vh;
     width: 27vw;
 }
 
@@ -130,7 +130,7 @@ h1 {
 }
 
 #pic {
-    top: 55%;
+    top: 60%;
 }
 
 #correct {
@@ -158,7 +158,7 @@ h1 {
 @media (max-width: 1050px) {
 
     #resultPic {
-        height: 20vh;
+        height: 30vh;
         width: 44vw;
     }
 }
@@ -179,7 +179,7 @@ h1 {
     }
 
     #resultPic {
-        height: 20vh;
+        height: 30vh;
         width: 66vw;
     }
 }
