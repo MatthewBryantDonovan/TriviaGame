@@ -1,14 +1,148 @@
-.option {
-    background: lightblue;
-}
-
 #continue {
     display: none;
 }
 
-.option {
-    background: lightcoral;
-}
 .option:hover {
-    border: 3px solid blue;
+    width: 90%;
+    border: 3px solid rgb(149, 191, 218);
+    text-align: center;
+}
+
+body {
+    background: url(../images/johnWickBG.jpg);
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+h1 {
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: gray;
+}
+
+.topType,
+.resultType {
+    font-size: 4vh;
+    color: gray;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+
+}
+
+.btnType {
+    font-size: 2.5vh;
+    background: rgba(0, 0, 0, .5);
+    border: none;
+    width: none;
+    color: white;
+}
+
+
+
+.headBG {
+    background: black;
+}
+
+.boardBG {
+    height: 70vh;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.fullOP {
+    opacity: initial;
+}
+
+#time-left,
+#q,
+#a1,
+#a2,
+#a3,
+#a4,
+#result,
+#answer,
+#pic,
+#correct,
+#incorrect,
+#unanswered,
+#continue,
+#start {
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+
+}
+
+.option {
+    font-size: 3vh;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: gray;
+    text-align: none;
+}
+
+#time-left {
+    font-size: 3vh;
+    top: 10%;
+}
+
+#q {
+    top: 30%;
+}
+
+#a1 {
+    top: 50%;
+}
+
+#a2 {
+    top: 60%;
+}
+
+
+#a3 {
+    top: 70%;
+}
+
+#a4 {
+    top: 80%;
+}
+
+#result {
+    top: 15%;
+}
+
+#answer {
+    top: 30%;
+}
+
+#pic {
+    top: 55%;
+    /*     height: 200px;
+    width: 200px; */
+
+}
+
+#correct {
+    top: 30%;
+}
+
+#incorrect {
+    top: 45%;
+}
+
+#unanswered {
+    top: 60%;
+}
+
+#continue {
+    top: 90%;
+    width: 20%;
+}
+
+#start {
+    top: 80%;
+    width: 20%;
 }

@@ -18,26 +18,26 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 bg-warning text-center">
+            <div class="col-md-12 text-center headBG">
                 <h1>John Wick Trivia Game</h1>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="bg-success col-md-10 mt-5">
-                <div id="time-left"></div> <!-- time remaining countdown-->
-                <div id="q"></div> <!-- Trivia question -->
+            <div class="boardBG col-md-10 mt-5">
+                <div id="time-left" class="topType"></div> <!-- time remaining countdown-->
+                <div id="q" class="topType"></div> <!-- Trivia question -->
                 <div id="a1" class="option"></div> <!-- 1st option -->
                 <div id="a2" class="option"></div> <!-- 2nd option -->
                 <div id="a3" class="option"></div> <!-- 3rd option -->
                 <div id="a4" class="option"></div> <!-- 4th option -->
-                <div id="result"></div> <!-- question result and final result message -->
-                <div id="answer"></div>
+                <div id="result" class="resultType"></div> <!-- question result and final result message -->
+                <div id="answer" class="resultType"></div>
                 <div id="pic"></div> <!-- append image here for results -->
-                <div id="correct"></div> <!-- final result message correct data -->
-                <div id="incorrect"></div> <!-- final result message incorrect data -->
-                <div id="unanswered"></div> <!-- final result message unanswered data -->
-                <button id="continue"> Continue </button>
-                <button id="start"> start </button> <!-- only available at start of game then repurpose to ;Start Over; button-->
+                <div id="correct" class="resultType"></div> <!-- final result message correct data -->
+                <div id="incorrect" class="resultType"></div> <!-- final result message incorrect data -->
+                <div id="unanswered" class="resultType"></div> <!-- final result message unanswered data -->
+                <button id="continue" class="btnType"> Continue </button>
+                <button id="start" class="btnType"> start </button> <!-- only available at start of game then repurpose to ;Start Over; button-->
             </div>
         </div>
 

@@ -166,11 +166,11 @@ var trivia = {
 
 }
 
-trivia.qLoader("John Wick seeks vengeance after which happens?", "His dog is killed", "His wife is taken", "Someone rips his suit jacket", "Someone destroys his favorite firearm", "alucard.png", 0);
-trivia.qLoader("Which of the following is an alias of John Wick?", "Baba Yaga", "Killer 7", "Dark Phantom", "Shooter in the Dark", "alucard.png", 1);
-trivia.qLoader("Viggo Tarasov tells the story of John Wick killing three men with 'what' item?", "Pencil", "Carrot", "Wiffle Ball Bat", "Paper Clip", "alucard.png", 2);
-trivia.qLoader("Who is the owner of the Continental?", "Winston", "Harry", "Marcus", "Charon", "alucard.png", 3);
-trivia.qLoader("What breed of dog does John Wick free at the end of the movie?", "Pit Bull", "German Shepherd", "Bulldog", "Rottweiler", "alucard.png", 4);
+trivia.qLoader("John Wick seeks vengeance after which happens?", "His dog is killed", "His wife is taken", "Someone rips his suit jacket", "Someone destroys his favorite firearm", "jwDog.gif", 0);
+trivia.qLoader("Which of the following is an alias of John Wick?", "Baba Yaga", "Killer 7", "Dark Phantom", "Shooter in the Dark", "baba.gif", 1);
+trivia.qLoader("Viggo Tarasov tells the story of John Wick killing three men with 'what' item?", "Pencil", "Carrot", "Wiffle Ball Bat", "Paper Clip", "pencil.gif", 2);
+trivia.qLoader("Who is the owner of the Continental?", "Winston", "Harry", "Marcus", "Charon", "winston.gif", 3);
+trivia.qLoader("What breed of dog does John Wick free at the end of the movie?", "Pit Bull", "German Shepherd", "Bulldog", "Rottweiler", "pitBull.gif", 4);
 
 
 trivia.start();
