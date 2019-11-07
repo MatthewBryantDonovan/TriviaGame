@@ -27,6 +27,9 @@ var trivia = {
 
     start() {
         trivia.replay();
+        $("#q").html("How well do you know John Wick?");
+        $("#incorrect").html("You have 30 seconds per question,");
+        $("#unanswered").html("Good luck!");
         $("#continue").html("Continue");
         $("#continue").css("display", "none");
         $("#start").css("display", "initial");
@@ -37,7 +40,7 @@ var trivia = {
     },
 
     qCurrent() {
-
+        clearInterval(trivia.questionTimer);
         trivia.timer = 30;
 
         function startTimer() {
@@ -63,6 +66,8 @@ var trivia = {
 
         startTimer();
 
+        $("#incorrect").html("");
+        $("#unanswered").html("");
         $("#continue").css("display", "none");
         $("#start").css("display", "none");
         $("#answer").html("");
@@ -112,10 +117,13 @@ var trivia = {
         $("#a3").html("");
         $("#a4").html("");
         $(".option").prop("onclick", null);
-        $("#continue").css("display", "initial");
         
         if (trivia.timer == 0) {
             $("#result").html("You ran out of time!");
+
+            //NOTE: remove line before after turning in
+            $("#answer").html("The correct answer was: " + trivia.question.option1[trivia.currentQ - 1]);
+
             trivia.oot++;
             console.log("oot", trivia.oot);
 
@@ -127,21 +135,61 @@ var trivia = {
 
         } else {
             $("#result").html("You guessed wrong!");
+
+            //NOTE: remove line before after turning in
+            $("#answer").html("The correct answer was: " + trivia.question.option1[trivia.currentQ - 1]);
+
             trivia.loss++;
             console.log("loss", trivia.loss);
         }
 
-        $("#answer").html("The correct answer was: " + trivia.question.option1[trivia.currentQ - 1]);
+        /* $("#answer").html("The correct answer was: " + trivia.question.option1[trivia.currentQ - 1]); */
+        //NOTE: uncomment this line above after turning in
+
         $("#pic").html("<img id=resultPic src=./assets/images/" + trivia.question.result[trivia.currentQ - 1] + "></img>");
+
+
+        //NOTE:remove timer below until next note
+        trivia.timer = 7;
+
+        function startTimer() {
+            clearInterval(trivia.questionTimer);
+            trivia.questionTimer = setInterval(tickDown, 1000 * 1);
+        }
+
+        function tickDown() {
+            trivia.timer--;
+            if (trivia.timer == 0) {
+                if (trivia.currentQ != trivia.question.ask.length) {
+                    trivia.qCurrent();
+                } else {
+                    trivia.finalResult();
+                }
+            }
+        }
+
+        startTimer();
+        //NOTE:remove timer above until previous note after turn in
+
+
+        //NOTE: uncomment below until next note
+
+       /*  $("#continue").css("display", "initial");
         if (trivia.currentQ != trivia.question.ask.length) {
             $("#continue").attr("onclick", "trivia.qCurrent()");
         } else {
             $("#continue").attr("onclick", "trivia.finalResult()");
-        }
+        } */
+
+        //NOTE: uncomment above until previous note after turn in
 
     },
 
     finalResult() {
+        //NOTE:remove the line of code below after turn in
+        $("#continue").css("display", "initial")
+
+        clearInterval(trivia.questionTimer);
         $("#answer").html("");
         $("#pic").html("");
         $("#result").html("Here is how you did!");
