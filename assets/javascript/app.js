@@ -116,7 +116,7 @@ var trivia = {
         $("#a2").html("");
         $("#a3").html("");
         $("#a4").html("");
-        $(".option").prop("onclick", null);
+        $(".option").attr("onclick", null);
         
         if (trivia.timer == 0) {
             $("#result").html("You ran out of time!");
