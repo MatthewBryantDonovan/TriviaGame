@@ -33,6 +33,8 @@ Try your best to guess these 'John Wick' movie based questions correctly in this
 
 - - -
 
+## Final Results
+
 * Once you have answered all the questions the game will tell you how you did and offer you to play again.
 
 ![Final Results](./readme_pics/finalResults.PNG)
