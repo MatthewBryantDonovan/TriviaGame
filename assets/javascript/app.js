@@ -1,20 +1,21 @@
 var trivia = {
     question: {
         ask: [],
-        option1: [], //will always be the correct answer
+        option1: [], //This will always be the correct answer.
         option2: [],
         option3: [],
         option4: [],
         result: [],
         qSKU: [],
         questionTimer: setInterval(1000),
-        timer: 30,
+        timer: 30
     },
     win: 0,
     loss: 0,
     oot: 0,
     currentQ: 0,
 
+    // Allow the trivia questions to be added easily later on.
     qLoader(ask, option1, option2, option3, option4, result, qSKU) {
         trivia.question.ask.push(ask);
         trivia.question.option1.push(option1);
@@ -25,6 +26,7 @@ var trivia = {
         trivia.question.qSKU.push(qSKU);
     },
 
+    // Intro to the game with start button.
     start() {
         trivia.replay();
         $("#q").html("How well do you know John Wick?");
@@ -39,16 +41,18 @@ var trivia = {
 
     },
 
+    //Current question logic.
     qCurrent() {
         clearInterval(trivia.questionTimer);
         trivia.timer = 30;
 
+        //Start the timer for the current question.
         function startTimer() {
             clearInterval(trivia.questionTimer);
             trivia.questionTimer = setInterval(tickDown, 1000 * 1);
         }
 
-
+        // Display the clock for the user.
         function tickDown() {
 
             //  Decrease number by one.
@@ -64,6 +68,7 @@ var trivia = {
             }
         }
 
+        // Call the timer to start.
         startTimer();
 
         $("#incorrect").html("");
@@ -77,7 +82,7 @@ var trivia = {
         $("#time-left").html("Remaining Time: 30 Seconds");
         $("#q").html(trivia.question.ask[trivia.currentQ]);
 
-        //answer randomizer code
+        // Randomizer the answers as they are stored in a way where the 1st answer is always correct.
         var includes = [];
         var randomizeOptions = [];
         for (let i = 1; i <= 4; i++) {
@@ -108,7 +113,10 @@ var trivia = {
         trivia.currentQ++;
     },
 
+    // Display how the user did for the current question.
     qResult() {
+
+        //Clear the timer
         clearInterval(trivia.questionTimer);
         $("#time-left").html("");
         $("#q").html("");
@@ -118,6 +126,7 @@ var trivia = {
         $("#a4").html("");
         $(".option").attr("onclick", null);
         
+        // If the Timer ran out let them know what the correct answer was.
         if (trivia.timer == 0) {
             $("#result").html("You ran out of time!");
 
@@ -127,12 +136,14 @@ var trivia = {
             trivia.oot++;
             console.log("oot", trivia.oot);
 
+        // If the user guessed correct let them know.
         } else if (event.target.getAttribute("data-option") == trivia.question.option1[trivia.currentQ-1]) {
 
             $("#result").html("You guessed right!");
             trivia.win++;
             console.log("wins", trivia.win);
 
+        // If the user guessed wrong let them know the correct answer.
         } else {
             $("#result").html("You guessed wrong!");
 
@@ -150,13 +161,17 @@ var trivia = {
 
 
         //NOTE:remove timer below until next note
+        // Allow 7 seconds for the user to see the result screen.
         trivia.timer = 7;
 
+        // Start the result screen timer
         function startTimer() {
             clearInterval(trivia.questionTimer);
             trivia.questionTimer = setInterval(tickDown, 1000 * 1);
         }
 
+        //Allows the timer to function. When it's done go to the next question or -
+        //  display final Results when all Q's have been asked.
         function tickDown() {
             trivia.timer--;
             if (trivia.timer == 0) {
@@ -168,6 +183,7 @@ var trivia = {
             }
         }
 
+        // Call the function to start the timer.
         startTimer();
         //NOTE:remove timer above until previous note after turn in
 
@@ -185,9 +201,10 @@ var trivia = {
 
     },
 
+    // Display the final results.
     finalResult() {
-        //NOTE:remove the line of code below after turn in
-        $("#continue").css("display", "initial")
+        //NOTE:remove the line of code below after turn in.
+        $("#continue").css("display", "initial");
 
         clearInterval(trivia.questionTimer);
         $("#answer").html("");
@@ -200,6 +217,7 @@ var trivia = {
         $("#continue").attr("onclick", "trivia.start()");
     },
 
+    // When a replay is requested reset the data and clear the screen.
     replay() {
         $("#result").html("");
         $("#correct").html("");
@@ -214,13 +232,14 @@ var trivia = {
 
 }
 
+// Load the questions into the trivia game.
 trivia.qLoader("John Wick seeks vengeance after which happens?", "His dog is killed", "His wife is taken", "Someone rips his suit jacket", "Someone destroys his favorite firearm", "jwDog.gif", 0);
 trivia.qLoader("Which of the following is an alias of John Wick?", "Baba Yaga", "Killer 7", "Dark Phantom", "Shooter in the Dark", "baba.gif", 1);
 trivia.qLoader("Viggo Tarasov tells the story of John Wick killing three men with 'what' item?", "Pencil", "Carrot", "Wiffle Ball Bat", "Paper Clip", "pencil.gif", 2);
 trivia.qLoader("Who is the owner of the Continental?", "Winston", "Harry", "Marcus", "Charon", "winston.gif", 3);
 trivia.qLoader("What breed of dog does John Wick free at the end of the movie?", "Pit Bull", "German Shepherd", "Bulldog", "Rottweiler", "pitBull.gif", 4);
 
-
+// Start the game.
 trivia.start();
 
 
@@ -252,28 +271,3 @@ trivia.start();
 // wins
 // loss
 // OOT
-
-
-
-/* 
-**[Click Here to Watch the demo](https://youtu.be/xhmmiRmxQ8Q)**.
-
-* You'll create a trivia game that shows only one question until the player answers it or their time runs out.
-
-* If the player selects the correct answer, show a screen congratulating them for choosing the right option. After a few seconds, display the next question -- do this without user input.
-
-* The scenario is similar for wrong answers and time-outs.
-
-  * If the player runs out of time, tell the player that time's up and display the correct answer. Wait a few seconds, then show the next question.
-  * If the player chooses the wrong answer, tell the player they selected the wrong option and then display the correct answer. Wait a few seconds, then show the next question.
-
-* On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
-
-### Create a README.md
-
-Add a `README.md` to your repository describing the project. Here are some resources for creating your `README.md`. Here are some resources to help you along the way:
-
-* [About READMEs](https://help.github.com/articles/about-readmes/)
-
-* [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
- */
